@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>UTOM · Learn Without Limits</title>
+  <title>UTOM · Learn Without Limits — Master New Skills Anytime, Anywhere</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     :root {
@@ -16,1239 +16,638 @@
       --text: #1a1d28;
       --text-secondary: #5f6377;
       --text-muted: #8b8fa3;
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.07);
-      --shadow-lg: 0 14px 38px rgba(0, 0, 0, 0.10);
-      --shadow-gold: 0 8px 28px rgba(245, 176, 66, 0.22);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.07);
+      --shadow-lg: 0 14px 38px rgba(0,0,0,0.10);
+      --shadow-gold: 0 8px 28px rgba(245,176,66,0.22);
       --radius-sm: 14px;
       --radius-md: 20px;
       --radius-lg: 28px;
       --radius-xl: 36px;
       --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       --max-width: 1200px;
-      --nav-height: 68px;
+      --nav-height: 72px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--nav-height);
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top: var(--nav-height); }
     body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-      overflow-x: hidden;
+      background: var(--bg); color: var(--text);
+      -webkit-font-smoothing: antialiased; line-height: 1.7; overflow-x: hidden;
     }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    img { max-width:100%; display:block; }
+    a { text-decoration:none; color:inherit; }
 
-    /* ── NAVIGATION ── */
+    /* NAV */
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid #f0e8d8;
-      transition: var(--transition);
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
+      position:fixed; top:0; left:0; width:100%; z-index:100;
+      background: rgba(255,255,255,0.94); backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); border-bottom:1px solid #f0e8d8;
+      height: var(--nav-height); display:flex; align-items:center; transition: var(--transition);
     }
-    .nav.scrolled {
-      box-shadow: var(--shadow-sm);
-    }
+    .nav.scrolled { box-shadow: var(--shadow-sm); }
     .nav-inner {
-      max-width: var(--max-width);
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: var(--max-width); width:100%; margin:0 auto; padding:0 1.5rem;
+      display:flex; justify-content:space-between; align-items:center;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, #1a1d28 30%, #F5B042 80%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.3px;
-      white-space: nowrap;
-    }
-    .nav-logo i {
-      background: none;
-      -webkit-text-fill-color: #F5B042;
-      font-size: 1.6rem;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
+    .nav-logo { display:flex; align-items:center; gap:6px; flex-shrink:0; }
+    .nav-logo-img { height:36px; width:auto; object-fit:contain; }
+    .nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
     .nav-links a {
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      transition: var(--transition);
-      position: relative;
+      font-weight:600; font-size:0.88rem; color:var(--text-secondary);
+      transition: var(--transition); position:relative;
     }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--gold-dark);
-    }
+    .nav-links a:hover, .nav-links a.active { color:var(--gold-dark); }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2.5px;
-      border-radius: 4px;
-      background: var(--gold);
-      transition: width 0.25s ease;
+      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2.5px;
+      border-radius:4px; background:var(--gold); transition: width 0.25s ease;
     }
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
     .nav-cta {
-      background: var(--gold);
-      color: #fff !important;
-      padding: 10px 22px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: var(--transition);
-      box-shadow: 0 3px 14px rgba(245, 176, 66, 0.35);
-      white-space: nowrap;
+      background:var(--gold); color:#fff!important; padding:10px 22px;
+      border-radius:60px; font-weight:700; font-size:0.85rem; transition: var(--transition);
+      box-shadow: 0 3px 14px rgba(245,176,66,0.35); white-space:nowrap;
     }
-    .nav-cta:hover {
-      background: #e8a830;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(245, 176, 66, 0.45);
-    }
-    .nav-cta::after {
-      display: none !important;
-    }
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text);
-      cursor: pointer;
-    }
+    .nav-cta:hover { background:#e8a830; transform:translateY(-2px); box-shadow:0 6px 22px rgba(245,176,66,0.45); }
+    .nav-cta::after { display:none!important; }
+    .mobile-menu-btn { display:none; background:none; border:none; font-size:1.5rem; color:var(--text); cursor:pointer; }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      min-height: 85vh;
+      max-width: var(--max-width); margin:0 auto;
+      display:flex; align-items:center; gap:3.5rem; min-height:88vh;
     }
-    .hero-content {
-      flex: 1;
-      z-index: 2;
-    }
+    .hero-content { flex:1; z-index:2; }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--gold-soft);
-      color: var(--gold-dark);
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 8px 16px;
-      border-radius: 60px;
-      margin-bottom: 1.2rem;
-      border: 1px solid #f0d8a8;
-      letter-spacing: 0.3px;
-    }
-    .hero-badge i {
-      color: var(--gold);
-      font-size: 0.7rem;
+      display:inline-flex; align-items:center; gap:7px;
+      background:var(--gold-soft); color:var(--gold-dark);
+      font-weight:700; font-size:0.8rem; padding:8px 16px; border-radius:60px;
+      margin-bottom:1.2rem; border:1px solid #f0d8a8; letter-spacing:0.3px;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      margin-bottom: 1.2rem;
-      color: #1a1d28;
+      font-size:clamp(2.4rem,5vw,3.8rem); font-weight:900; line-height:1.15;
+      letter-spacing:-1px; margin-bottom:1.4rem; color:#1a1d28;
     }
     .hero h1 span {
-      background: linear-gradient(135deg, #c47f1a 0%, #F5B042 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background:linear-gradient(135deg,#c47f1a 0%,#F5B042 100%);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
     }
     .hero p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 500px;
-      margin-bottom: 2rem;
-      line-height: 1.7;
+      font-size:1.1rem; color:var(--text-secondary); max-width:540px;
+      margin-bottom:2rem; line-height:1.8;
     }
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
+    .hero-buttons { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
     .btn-primary {
-      background: var(--gold);
-      color: #fff;
-      padding: 14px 30px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-gold);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
+      background:var(--gold); color:#fff; padding:14px 30px; border-radius:60px;
+      font-weight:700; font-size:0.95rem; border:none; cursor:pointer;
+      transition: var(--transition); box-shadow: var(--shadow-gold);
+      display:inline-flex; align-items:center; gap:8px; text-decoration:none;
     }
-    .btn-primary:hover {
-      background: #e8a830;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(245, 176, 66, 0.4);
-    }
+    .btn-primary:hover { background:#e8a830; transform:translateY(-3px); box-shadow:0 12px 32px rgba(245,176,66,0.4); }
     .btn-secondary {
-      background: #fff;
-      color: var(--text);
-      padding: 14px 30px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: 2px solid #e5e8ed;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      background:#fff; color:var(--text); padding:14px 30px; border-radius:60px;
+      font-weight:700; font-size:0.95rem; border:2px solid #e5e8ed; cursor:pointer;
+      transition: var(--transition); display:inline-flex; align-items:center; gap:8px;
     }
-    .btn-secondary:hover {
-      border-color: var(--gold);
-      color: var(--gold-dark);
-      background: #fffdf7;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    .hero-visual {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+    .btn-secondary:hover { border-color:var(--gold); color:var(--gold-dark); background:#fffdf7; transform:translateY(-3px); box-shadow:var(--shadow-md); }
+
+    .hero-visual { flex:1; display:flex; justify-content:center; align-items:center; position:relative; }
     .hero-mockup {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      padding: 1.2rem;
-      width: 100%;
-      max-width: 440px;
-      border: 1px solid #f0e8d8;
-      position: relative;
-      z-index: 2;
+      background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);
+      padding:1.2rem; width:100%; max-width:440px; border:1px solid #f0e8d8;
+      position:relative; z-index:2;
     }
-    .hero-mockup-inner {
-      background: var(--bg);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .hero-mockup-inner .mock-logo {
-      font-weight: 800;
-      font-size: 1.3rem;
-      background: linear-gradient(135deg, #1a1d28 30%, #F5B042 80%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .hero-mockup-inner .mock-logo i {
-      -webkit-text-fill-color: #F5B042;
-    }
-    .mock-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-    }
+    .hero-mockup-inner { background:var(--bg); border-radius:var(--radius-md); padding:1.5rem; text-align:center; }
+    .mock-logo-img { height:28px; width:auto; object-fit:contain; margin:0 auto 0.8rem; display:block; }
+    .mock-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; }
     .mock-card {
-      background: #fff;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #f2f2f5;
-      text-align: left;
-      padding: 10px;
+      background:#fff; border-radius:var(--radius-sm); overflow:hidden;
+      box-shadow:var(--shadow-sm); border:1px solid #f2f2f5; text-align:left; padding:10px;
     }
-    .mock-card .mock-icon {
-      font-size: 1.4rem;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-    .mock-card .mock-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: #1a1d28;
-    }
+    .mock-card .mock-icon { font-size:1.4rem; color:var(--gold); margin-bottom:6px; }
+    .mock-card .mock-title { font-size:0.7rem; font-weight:700; color:#1a1d28; }
     .mock-card .mock-badge {
-      font-size: 0.6rem;
-      background: #F5B04218;
-      color: #c47f1a;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-weight: 700;
-      display: inline-block;
-      margin-top: 4px;
+      font-size:0.6rem; background:#F5B04218; color:#c47f1a; padding:2px 8px;
+      border-radius:20px; font-weight:700; display:inline-block; margin-top:4px;
     }
     .hero-glow {
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(245, 176, 66, 0.18) 0%, transparent 70%);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      pointer-events: none;
+      position:absolute; width:340px; height:340px;
+      background:radial-gradient(circle, rgba(245,176,66,0.18) 0%, transparent 70%);
+      border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);
+      z-index:1; pointer-events:none;
     }
 
-    /* ── SECTION COMMONS ── */
-    .section {
-      padding: 5rem 1.5rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
+    /* SECTIONS */
+    .section { padding:5rem 1.5rem; max-width:var(--max-width); margin:0 auto; }
     .section-label {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      background: #F5B04212;
-      padding: 6px 14px;
-      border-radius: 40px;
-      margin-bottom: 0.8rem;
+      display:inline-block; font-weight:700; font-size:0.78rem; letter-spacing:0.6px;
+      text-transform:uppercase; color:var(--gold-dark); background:#F5B04212;
+      padding:6px 14px; border-radius:40px; margin-bottom:0.8rem;
     }
     .section h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.8rem;
-      color: #1a1d28;
+      font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:900; letter-spacing:-0.5px;
+      margin-bottom:0.8rem; color:#1a1d28;
     }
-    .section h2 span {
-      color: var(--gold-dark);
-    }
+    .section h2 span { color:var(--gold-dark); }
     .section-desc {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      max-width: 600px;
-      margin-bottom: 3rem;
-      line-height: 1.7;
+      color:var(--text-secondary); font-size:1rem; max-width:640px;
+      margin-bottom:3rem; line-height:1.8;
     }
-    .text-center {
-      text-align: center;
-    }
-    .text-center .section-desc {
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .text-center { text-align:center; }
+    .text-center .section-desc { margin-left:auto; margin-right:auto; }
 
-    /* ── FEATURES ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
     .feature-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.6rem;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #f2f2f5;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
+      background:#fff; border-radius:var(--radius-lg); padding:2rem 1.6rem;
+      box-shadow:var(--shadow-sm); border:1px solid #f2f2f5; transition:var(--transition);
+      position:relative; overflow:hidden;
     }
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: #f0d8a8;
-    }
+    .feature-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-md); border-color:#f0d8a8; }
     .feature-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.2rem;
-      background: #F5B04215;
-      color: var(--gold-dark);
-      transition: var(--transition);
+      width:52px; height:52px; border-radius:var(--radius-sm); display:flex;
+      align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.2rem;
+      background:#F5B04215; color:var(--gold-dark); transition:var(--transition);
     }
-    .feature-card:hover .feature-icon {
-      background: var(--gold);
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(245, 176, 66, 0.35);
-    }
-    .feature-card h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: #1a1d28;
-    }
-    .feature-card p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
+    .feature-card:hover .feature-icon { background:var(--gold); color:#fff; box-shadow:0 6px 18px rgba(245,176,66,0.35); }
+    .feature-card h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.6rem; color:#1a1d28; }
+    .feature-card p { font-size:0.88rem; color:var(--text-secondary); line-height:1.65; }
 
-    /* ── HOW IT WORKS ── */
-    .steps-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
+    .steps-container { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
     .step-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      flex: 1 1 220px;
-      max-width: 280px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid #f2f2f5;
-      transition: var(--transition);
-      position: relative;
+      background:#fff; border-radius:var(--radius-lg); padding:2rem 1.5rem; text-align:center;
+      flex:1 1 240px; max-width:290px; box-shadow:var(--shadow-sm);
+      border:1px solid #f2f2f5; transition:var(--transition); position:relative;
     }
-    .step-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: #f0d8a8;
-    }
+    .step-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:#f0d8a8; }
     .step-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      box-shadow: 0 4px 14px rgba(245, 176, 66, 0.3);
+      width:48px; height:48px; border-radius:50%; background:var(--gold); color:#fff;
+      font-weight:900; font-size:1.3rem; display:flex; align-items:center; justify-content:center;
+      margin:0 auto 1rem; box-shadow:0 4px 14px rgba(245,176,66,0.3);
     }
-    .step-card h3 {
-      font-weight: 800;
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-      color: #1a1d28;
+    .step-card h3 { font-weight:800; font-size:0.95rem; margin-bottom:0.5rem; color:#1a1d28; }
+    .step-card p { font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
+
+    /* FLOATING PHONE */
+    .phone-float-wrapper {
+      position:relative; display:flex; align-items:center; justify-content:center;
+      flex:1; min-width:280px; perspective:800px;
     }
-    .step-card p {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
+    .phone-float-container {
+      position:relative; animation:floatPhone 5.5s ease-in-out infinite;
+      transform-style:preserve-3d;
+    }
+    @keyframes floatPhone {
+      0%,100%{ transform:translateY(0px) rotateY(0deg) rotateX(0deg); }
+      15%{ transform:translateY(-18px) rotateY(2deg) rotateX(1deg); }
+      30%{ transform:translateY(-8px) rotateY(-1.5deg) rotateX(-0.5deg); }
+      45%{ transform:translateY(-22px) rotateY(0.5deg) rotateX(1.5deg); }
+      60%{ transform:translateY(-4px) rotateY(-2deg) rotateX(-0.8deg); }
+      75%{ transform:translateY(-16px) rotateY(1.5deg) rotateX(0.5deg); }
+      90%{ transform:translateY(-2px) rotateY(0deg) rotateX(0deg); }
+    }
+    .phone-device {
+      width:270px; height:540px; background:#1a1d28; border-radius:38px; padding:12px;
+      position:relative; box-shadow:0 20px 55px rgba(0,0,0,0.25),0 4px 16px rgba(0,0,0,0.18),
+                  inset 0 0 0 2px #2a2d3a,inset 0 0 0 4px #1a1d28;
+    }
+    .phone-device::before {
+      content:''; position:absolute; top:16px; left:50%; transform:translateX(-50%);
+      width:80px; height:6px; background:#2a2d3a; border-radius:20px; z-index:3;
+    }
+    .phone-device::after {
+      content:''; position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+      width:50px; height:4px; background:#2a2d3a; border-radius:20px; z-index:3;
+    }
+    .phone-screen { width:100%; height:100%; border-radius:28px; overflow:hidden; background:#fff; }
+    .phone-screen img { width:100%; height:100%; object-fit:cover; }
+    .phone-shadow {
+      position:absolute; bottom:-40px; left:50%; transform:translateX(-50%);
+      width:180px; height:30px; background:radial-gradient(ellipse, rgba(0,0,0,0.22) 0%, transparent 70%);
+      border-radius:50%; animation:shadowPulse 5.5s ease-in-out infinite; pointer-events:none;
+    }
+    @keyframes shadowPulse {
+      0%,100%{ transform:translateX(-50%) scale(1); opacity:0.7; }
+      15%{ transform:translateX(-50%) scale(0.75); opacity:0.45; }
+      30%{ transform:translateX(-50%) scale(0.9); opacity:0.6; }
+      45%{ transform:translateX(-50%) scale(0.7); opacity:0.4; }
+      60%{ transform:translateX(-50%) scale(0.95); opacity:0.65; }
+      75%{ transform:translateX(-50%) scale(0.78); opacity:0.5; }
+      90%{ transform:translateX(-50%) scale(1); opacity:0.7; }
+    }
+    .phone-float-glow {
+      position:absolute; width:280px; height:280px;
+      background:radial-gradient(circle, rgba(245,176,66,0.14) 0%, transparent 70%);
+      border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%);
+      z-index:0; pointer-events:none; animation:glowPulse 5.5s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100%{ opacity:0.55; transform:translate(-50%,-50%) scale(1); }
+      50%{ opacity:0.85; transform:translate(-50%,-50%) scale(1.15); }
     }
 
-    /* ── APP DOWNLOAD SECTION ── */
+    /* APP DOWNLOAD SECTION */
     .app-download-section {
-      background: #fff;
-      padding: 5rem 1.5rem;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-md);
-      margin: 2rem auto;
-      max-width: 1000px;
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      border: 1px solid #f0e8d8;
+      background:#fff; padding:5rem 2rem; border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-md); margin:2rem auto; max-width:1050px;
+      display:flex; align-items:center; gap:3.5rem; flex-wrap:wrap; border:1px solid #f0e8d8;
     }
-    .app-mockup {
-      flex: 1;
-      text-align: center;
-    }
-    .app-mockup img {
-      max-height: 460px;
-      object-fit: contain;
-      border-radius: 32px;
-      box-shadow: var(--shadow-lg);
-      width: 100%;
-    }
-    .app-download-content {
-      flex: 1;
-    }
-    .app-download-content h2 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #1a1d28;
-      margin-bottom: 1rem;
-    }
-    .app-download-content p {
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-    .download-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 1.2rem;
-    }
+    .app-download-content { flex:1; min-width:280px; }
+    .app-download-content h2 { font-size:2.2rem; font-weight:900; color:#1a1d28; margin-bottom:1rem; }
+    .app-download-content p { color:var(--text-secondary); margin-bottom:1.2rem; font-size:1rem; line-height:1.75; }
+    .app-detail-list { list-style:none; margin-bottom:2rem; padding:0; }
+    .app-detail-list li { display:flex; align-items:flex-start; gap:10px; margin-bottom:0.7rem; font-size:0.9rem; color:var(--text-secondary); }
+    .app-detail-list li i { color:var(--gold); font-size:1rem; margin-top:3px; flex-shrink:0; }
+    .download-buttons { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin-bottom:1.2rem; }
     .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #1a1d28;
-      color: #fff;
-      padding: 16px 36px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-      letter-spacing: 0.3px;
-      text-decoration: none;
+      display:inline-flex; align-items:center; gap:12px; background:#1a1d28; color:#fff;
+      padding:16px 36px; border-radius:60px; font-weight:700; font-size:1.05rem;
+      transition:var(--transition); border:none; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,0.18);
     }
-    .download-btn i {
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
-    .download-btn:hover {
-      background: #2a2d3a;
-      transform: scale(1.03);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
-    }
+    .download-btn i { font-size:1.3rem; color:var(--gold); }
+    .download-btn:hover { background:#2a2d3a; transform:scale(1.03); box-shadow:0 12px 32px rgba(0,0,0,0.25); }
     .ios-download-btn {
-      background: #fff;
-      color: #1a1d28;
-      border: 2px solid #e5e8ed;
-      padding: 16px 36px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1.05rem;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
+      background:#fff; color:#1a1d28; border:2px solid #e5e8ed; padding:16px 36px;
+      border-radius:60px; font-weight:700; font-size:1.05rem; transition:var(--transition);
+      display:inline-flex; align-items:center; gap:12px; cursor:pointer;
     }
-    .ios-download-btn i {
-      color: #1a1d28;
-      font-size: 1.3rem;
-    }
-    .ios-download-btn:hover {
-      border-color: var(--gold);
-      background: #fffdf7;
-      transform: scale(1.03);
-      box-shadow: var(--shadow-md);
-    }
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(245, 176, 66, 0.5); }
-      70% { box-shadow: 0 0 0 12px rgba(245, 176, 66, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(245, 176, 66, 0); }
-    }
-    .app-version-text {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
+    .ios-download-btn i { color:#1a1d28; font-size:1.3rem; }
+    .ios-download-btn:hover { border-color:var(--gold); background:#fffdf7; transform:scale(1.03); box-shadow:var(--shadow-md); }
+    .pulse { animation:pulse 2s infinite; }
+    @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(245,176,66,0.5); } 70%{ box-shadow:0 0 0 14px rgba(245,176,66,0); } 100%{ box-shadow:0 0 0 0 rgba(245,176,66,0); } }
+    .app-version-text { font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem; }
+    .trust-row { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; align-items:center; margin-top:1rem; }
+    .trust-badge { display:flex; align-items:center; gap:8px; font-size:0.8rem; color:var(--text-muted); font-weight:600; }
+    .trust-badge i { color:#2e7d32; font-size:1rem; }
 
-    /* ── iOS INSTALL MODAL ── */
+    /* MODAL */
     .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s ease;
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.5); backdrop-filter:blur(6px);
+      display:flex; align-items:center; justify-content:center; z-index:1000;
+      visibility:hidden; opacity:0; transition:0.2s ease;
     }
-    .modal-overlay.open {
-      visibility: visible;
-      opacity: 1;
-    }
+    .modal-overlay.open { visibility:visible; opacity:1; }
     .modal-content {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem 2rem;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      transform: translateY(20px);
-      transition: 0.3s ease;
+      background:#fff; border-radius:var(--radius-lg); padding:2.5rem 2rem;
+      max-width:440px; width:90%; text-align:center; box-shadow:var(--shadow-lg);
+      position:relative; transform:translateY(20px); transition:0.3s ease;
     }
-    .modal-overlay.open .modal-content {
-      transform: translateY(0);
-    }
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 18px;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      color: #8b8fa3;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .modal-close:hover {
-      color: #e74c3c;
-    }
-    .modal-content h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 1.2rem;
-      color: #1a1d28;
-    }
-    .modal-steps {
-      text-align: left;
-      margin-bottom: 2rem;
-    }
-    .modal-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-    .modal-step .step-num {
-      background: var(--gold-soft);
-      color: var(--gold-dark);
-      font-weight: 800;
-      font-size: 0.8rem;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border: 1px solid #f0d8a8;
-    }
-    .modal-link-btn {
-      background: var(--gold);
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 0.8rem;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-    .modal-link-btn:hover {
-      background: #e8a830;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(245, 176, 66, 0.35);
-    }
-    .modal-note {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .modal-overlay.open .modal-content { transform:translateY(0); }
+    .modal-close { position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.4rem; color:#8b8fa3; cursor:pointer; }
+    .modal-close:hover { color:#e74c3c; }
+    .modal-content h3 { font-size:1.4rem; font-weight:800; margin-bottom:1.2rem; color:#1a1d28; }
+    .modal-steps { text-align:left; margin-bottom:2rem; }
+    .modal-step { display:flex; align-items:flex-start; gap:12px; margin-bottom:1rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.5; }
+    .modal-step .step-num { background:var(--gold-soft); color:var(--gold-dark); font-weight:800; font-size:0.8rem; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; border:1px solid #f0d8a8; }
+    .modal-link-btn { background:var(--gold); color:#fff; padding:12px 28px; border-radius:60px; font-weight:700; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px; margin-bottom:0.8rem; transition:var(--transition); text-decoration:none; }
+    .modal-link-btn:hover { background:#e8a830; transform:translateY(-2px); box-shadow:0 6px 18px rgba(245,176,66,0.35); }
+    .modal-note { font-size:0.75rem; color:var(--text-muted); }
 
-    /* ── CTA SECTION ── */
+    /* CTA */
     .cta-section {
-      background: linear-gradient(135deg, #1a1d28 0%, #2a2d3a 100%);
-      border-radius: var(--radius-xl);
-      padding: 3.5rem 2rem;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-      margin-top: 2rem;
+      background:linear-gradient(135deg,#1a1d28 0%,#2a2d3a 100%);
+      border-radius:var(--radius-xl); padding:4rem 2rem; text-align:center; color:#fff;
+      position:relative; overflow:hidden; margin-top:2rem;
     }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(245, 176, 66, 0.25) 0%, transparent 70%);
-      top: -60px;
-      right: -80px;
-      pointer-events: none;
-    }
-    .cta-section h2 {
-      color: #fff;
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      position: relative;
-      z-index: 1;
-    }
-    .cta-section p {
-      color: #c0c4d0;
-      font-size: 1rem;
-      max-width: 500px;
-      margin: 0.8rem auto 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    .cta-section .btn-primary {
-      position: relative;
-      z-index: 1;
-      font-size: 1rem;
-      padding: 16px 36px;
-    }
+    .cta-section::before { content:''; position:absolute; width:400px; height:400px; background:radial-gradient(circle, rgba(245,176,66,0.28) 0%,transparent 70%); top:-80px; right:-100px; pointer-events:none; }
+    .cta-section::after { content:''; position:absolute; width:300px; height:300px; background:radial-gradient(circle, rgba(245,176,66,0.16) 0%,transparent 70%); bottom:-60px; left:-80px; pointer-events:none; }
+    .cta-section h2 { color:#fff; font-size:clamp(1.8rem,3.5vw,2.5rem); position:relative; z-index:1; }
+    .cta-section p { color:#c0c4d0; font-size:1rem; max-width:550px; margin:0.8rem auto 2rem; position:relative; z-index:1; line-height:1.7; }
+    .cta-section .btn-primary { position:relative; z-index:1; font-size:1rem; padding:16px 36px; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     .footer {
-      background: #fff;
-      border-top: 1px solid #f0e8d8;
-      padding: 3rem 1.5rem 1.5rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.82rem;
+      background:#fff; border-top:1px solid #f0e8d8; padding:3.5rem 1.5rem 1.5rem;
+      text-align:center; color:var(--text-secondary); font-size:0.82rem;
     }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      text-align: left;
-      margin-bottom: 2rem;
+    .footer-inner { max-width:var(--max-width); margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; text-align:left; margin-bottom:2.5rem; }
+    .footer-col h4 { font-weight:800; color:#1a1d28; margin-bottom:0.8rem; font-size:0.9rem; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:0.5rem; }
+    .footer-col ul li a { color:var(--text-secondary); font-size:0.8rem; transition:var(--transition); }
+    .footer-col ul li a:hover { color:var(--gold-dark); }
+    .footer-bottom { border-top:1px solid #f2f2f5; padding-top:1.5rem; font-size:0.75rem; color:#8b8fa3; text-align:center; }
+    .footer-logo { display:inline-flex; align-items:center; gap:6px; margin-bottom:0.6rem; }
+    .footer-logo-img { height:32px; width:auto; object-fit:contain; }
+
+    @media (max-width:768px) {
+      .nav-links { position:fixed; top:var(--nav-height); left:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(18px); flex-direction:column; gap:0; padding:1rem 0; border-bottom:1px solid #f0e8d8; transform:translateY(-120%); transition:transform 0.3s ease; box-shadow:var(--shadow-md); z-index:99; }
+      .nav-links.open { transform:translateY(0); }
+      .nav-links li { width:100%; text-align:center; }
+      .nav-links a { display:block; padding:0.9rem; font-size:0.95rem; }
+      .nav-links a::after { display:none; }
+      .mobile-menu-btn { display:block; }
+      .hero { flex-direction:column; text-align:center; min-height:auto; padding-top:calc(var(--nav-height) + 2rem); gap:2rem; }
+      .hero p { max-width:100%; }
+      .hero-buttons { justify-content:center; }
+      .hero-visual { width:100%; }
+      .phone-device { width:220px; height:440px; border-radius:32px; }
+      .phone-screen { border-radius:24px; }
+      .phone-device::before { width:60px; height:5px; top:12px; }
+      .phone-device::after { width:38px; height:3px; bottom:10px; }
+      .download-buttons { justify-content:center; }
+      .footer-inner { flex-direction:column; text-align:center; }
+      .footer-col ul { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
     }
-    .footer-col h4 {
-      font-weight: 800;
-      color: #1a1d28;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
-    }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-    .footer-col ul li a {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      transition: var(--transition);
-    }
-    .footer-col ul li a:hover {
-      color: var(--gold-dark);
-    }
-    .footer-bottom {
-      border-top: 1px solid #f2f2f5;
-      padding-top: 1.5rem;
-      font-size: 0.75rem;
-      color: #8b8fa3;
-      text-align: center;
-    }
-    .footer-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 800;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, #1a1d28 30%, #F5B042 80%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.6rem;
-    }
-    .footer-logo i {
-      -webkit-text-fill-color: #F5B042;
+    @media (max-width:480px) {
+      .hero h1 { font-size:1.9rem; }
+      .phone-device { width:180px; height:360px; border-radius:28px; padding:8px; }
+      .phone-screen { border-radius:22px; }
+      .phone-device::before { width:48px; height:4px; top:10px; }
+      .phone-device::after { width:30px; height:3px; bottom:8px; }
+      .phone-shadow { width:120px; height:20px; bottom:-28px; }
     }
 
-    /* ── MOBILE NAV ── */
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: var(--nav-height);
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(18px);
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-        border-bottom: 1px solid #f0e8d8;
-        transform: translateY(-120%);
-        transition: transform 0.3s ease;
-        box-shadow: var(--shadow-md);
-        z-index: 99;
-      }
-      .nav-links.open {
-        transform: translateY(0);
-      }
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-      }
-      .nav-links a {
-        display: block;
-        padding: 0.9rem;
-        font-size: 0.95rem;
-      }
-      .nav-links a::after {
-        display: none;
-      }
-      .mobile-menu-btn {
-        display: block;
-      }
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        min-height: auto;
-        padding-top: calc(var(--nav-height) + 2rem);
-        gap: 2rem;
-      }
-      .hero p {
-        max-width: 100%;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
-      .hero-visual {
-        width: 100%;
-      }
-      .hero-mockup {
-        max-width: 100%;
-      }
-      .app-download-section {
-        flex-direction: column;
-        text-align: center;
-      }
-      .app-mockup img {
-        max-height: 320px;
-      }
-      .download-buttons {
-        justify-content: center;
-      }
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-      .footer-col ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.9rem;
-      }
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    @keyframes fadeInUp { from{ opacity:0; transform:translateY(24px); } to{ opacity:1; transform:translateY(0); } }
+    .animate-on-scroll { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
   </style>
 </head>
 <body>
-
-  <!-- ── NAVIGATION ── -->
   <nav class="nav" id="navbar">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <i class="fas fa-chalkboard-user"></i> UTOM
-      </a>
+      <a href="#" class="nav-logo"><img src="logo.png" alt="UTOM" class="nav-logo-img" /></a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#features" class="active">Features</a></li>
+        <li><a href="#features">Features</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#download">Download App</a></li>
+        <li><a href="#why-utom">Why UTOM</a></li>
+        <li><a href="#download">Download</a></li>
         <li><a href="#cta" class="nav-cta"><i class="fas fa-download"></i> Get the App</a></li>
       </ul>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
   <section class="hero" id="hero">
     <div class="hero-content animate-on-scroll">
-      <div class="hero-badge">
-        <i class="fas fa-star"></i> The learning app for Zambia
-      </div>
-      <h1>Learn New Skills, <span>Grow Your Future</span></h1>
+      <div class="hero-badge"><i class="fas fa-star"></i> Trusted by learners worldwide</div>
+      <h1>Master In‑Demand Skills <span>with UTOM</span></h1>
       <p>
-        UTOM puts expert-led video courses, rich documents, and offline learning right in your pocket. Download the app and start your journey today.
+        UTOM delivers expert‑led video courses, detailed study materials, and full offline access — all inside a single mobile application. Whether you're advancing your career, starting a side hustle, or exploring a new passion, UTOM puts a complete learning ecosystem in your pocket. No subscriptions, no hidden fees, just practical knowledge available anytime.
       </p>
       <div class="hero-buttons">
         <a href="#download" class="btn-primary"><i class="fas fa-download"></i> Download UTOM</a>
-        <a href="#features" class="btn-secondary"><i class="fas fa-play-circle"></i> See Features</a>
+        <a href="#features" class="btn-secondary"><i class="fas fa-play-circle"></i> Explore Features</a>
       </div>
     </div>
     <div class="hero-visual animate-on-scroll">
       <div class="hero-glow"></div>
       <div class="hero-mockup">
         <div class="hero-mockup-inner">
-          <div class="mock-logo">
-            <i class="fas fa-chalkboard-user"></i> UTOM
-          </div>
+          <img src="logo.png" alt="UTOM" class="mock-logo-img" />
           <div class="mock-grid">
-            <div class="mock-card">
-              <div class="mock-icon"><i class="fas fa-laptop-code"></i></div>
-              <div class="mock-title">Digital Skills</div>
-              <span class="mock-badge">ZMW 150</span>
-            </div>
-            <div class="mock-card">
-              <div class="mock-icon"><i class="fas fa-paint-brush"></i></div>
-              <div class="mock-title">Creative Arts</div>
-              <span class="mock-badge">ZMW 120</span>
-            </div>
-            <div class="mock-card">
-              <div class="mock-icon"><i class="fas fa-chart-line"></i></div>
-              <div class="mock-title">Business</div>
-              <span class="mock-badge">ZMW 200</span>
-            </div>
-            <div class="mock-card">
-              <div class="mock-icon"><i class="fas fa-lightbulb"></i></div>
-              <div class="mock-title">Free Courses</div>
-              <span class="mock-badge" style="background:#e8f8e8;color:#2e7d32;">FREE</span>
-            </div>
+            <div class="mock-card"><div class="mock-icon"><i class="fas fa-laptop-code"></i></div><div class="mock-title">Digital Skills</div><span class="mock-badge">$14.99</span></div>
+            <div class="mock-card"><div class="mock-icon"><i class="fas fa-paint-brush"></i></div><div class="mock-title">Creative Arts</div><span class="mock-badge">$12.99</span></div>
+            <div class="mock-card"><div class="mock-icon"><i class="fas fa-chart-line"></i></div><div class="mock-title">Business</div><span class="mock-badge">$19.99</span></div>
+            <div class="mock-card"><div class="mock-icon"><i class="fas fa-lightbulb"></i></div><div class="mock-title">Free Courses</div><span class="mock-badge" style="background:#e8f8e8;color:#2e7d32;">FREE</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FEATURES ── -->
   <section class="section text-center" id="features">
-    <span class="section-label">Why UTOM</span>
+    <span class="section-label">Core Capabilities</span>
     <h2>Everything You Need to <span>Succeed</span></h2>
-    <p class="section-desc">Designed to make learning flexible and engaging, whether you’re online or completely offline.</p>
+    <p class="section-desc">
+      UTOM is built for modern learners who demand flexibility and depth. Every feature works offline, respects your data, and helps you turn free time into productive learning — no matter where you are.
+    </p>
     <div class="features-grid">
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-video"></i></div>
-        <h3>Video Courses</h3>
-        <p>High-quality lessons from expert instructors, accessible on any device.</p>
+        <h3>Structured Video Courses</h3>
+        <p>Hundreds of hours of high‑definition video content broken into bite‑sized modules. Learn from industry professionals and revisit lessons as often as you like — all playback happens inside the app, no streaming required after download.</p>
       </div>
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-download"></i></div>
-        <h3>Offline Access</h3>
-        <p>Download videos and watch them anytime, no internet needed.</p>
+        <h3>Complete Offline Mode</h3>
+        <p>Download entire courses — videos and documents — with a single tap. Once downloaded, you can study anywhere, even without an internet connection. Ideal for commutes, travel, or areas with limited connectivity.</p>
       </div>
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
-        <h3>Rich Documents</h3>
-        <p>In-depth reading materials and guides paired with video content.</p>
+        <h3>In‑Depth Reading Materials</h3>
+        <p>Every course includes downloadable study guides, reference sheets, and practical exercises. These documents complement the video lessons and provide a comprehensive understanding of each topic.</p>
       </div>
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-wallet"></i></div>
-        <h3>Wallet System</h3>
-        <p>Deposit via MTN or Airtel and purchase courses securely.</p>
+        <h3>Integrated Digital Wallet</h3>
+        <p>Deposit funds securely using popular mobile money services or other supported methods. Your balance is always visible, and course purchases are instant — no bank account or credit card required.</p>
       </div>
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-heart"></i></div>
-        <h3>Save Favorites</h3>
-        <p>Like and bookmark your favorite videos and documents for quick access.</p>
+        <h3>Personalized Library</h3>
+        <p>Bookmark any video or document you love. Your favorites are organized in one place, so you can jump back into learning exactly where you left off, without searching.</p>
       </div>
       <div class="feature-card animate-on-scroll">
         <div class="feature-icon"><i class="fas fa-bell"></i></div>
-        <h3>Real-Time Updates</h3>
-        <p>Get notified about new courses and payment approvals instantly.</p>
+        <h3>Smart Notifications</h3>
+        <p>Receive push notifications for new course releases, payment confirmations, and special promotions. Stay informed without constantly checking — the app keeps you updated effortlessly.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── HOW IT WORKS ── -->
-  <section class="section text-center" id="how-it-works" style="background:#fff;max-width:100%;border-radius:0;padding-left:1.5rem;padding-right:1.5rem;">
-    <div style="max-width:var(--max-width);margin:0 auto;">
-      <span class="section-label">Simple Process</span>
+  <section class="section text-center" id="how-it-works" style="background:#fff;max-width:100%;border-radius:0;">
+    <div style="max-width:var(--max-width); margin:0 auto;">
+      <span class="section-label">Get Started in Minutes</span>
       <h2>How <span>UTOM</span> Works</h2>
-      <p class="section-desc">Four easy steps to start learning and growing with our app.</p>
+      <p class="section-desc">
+        The path from download to active learning is simple and intuitive. Everything happens inside the UTOM app — here's your quick roadmap.
+      </p>
       <div class="steps-container">
-        <div class="step-card animate-on-scroll">
-          <div class="step-number">1</div>
-          <h3>Download the App</h3>
-          <p>Get the UTOM app from our website and install it on your phone.</p>
-        </div>
-        <div class="step-card animate-on-scroll">
-          <div class="step-number">2</div>
-          <h3>Create an Account</h3>
-          <p>Sign up with your email and set up your profile in seconds.</p>
-        </div>
-        <div class="step-card animate-on-scroll">
-          <div class="step-number">3</div>
-          <h3>Fund Your Wallet</h3>
-          <p>Deposit via MTN or Airtel Mobile Money to unlock premium courses.</p>
-        </div>
-        <div class="step-card animate-on-scroll">
-          <div class="step-number">4</div>
-          <h3>Learn & Grow</h3>
-          <p>Watch videos, read documents, and track your progress — all inside the app.</p>
-        </div>
+        <div class="step-card animate-on-scroll"><div class="step-number">1</div><h3>Download the App</h3><p>Get the UTOM application directly from this page. Android users receive the APK file; iOS users follow a quick installation guide to add it to the home screen.</p></div>
+        <div class="step-card animate-on-scroll"><div class="step-number">2</div><h3>Create Your Account</h3><p>Open the app and sign up using your email address. Registration is fast, and you'll immediately unlock all free courses available on the platform.</p></div>
+        <div class="step-card animate-on-scroll"><div class="step-number">3</div><h3>Add Funds to Your Wallet</h3><p>Deposit money via mobile money or other in‑app payment options. Your wallet updates instantly, and you can purchase any premium course with a single tap.</p></div>
+        <div class="step-card animate-on-scroll"><div class="step-number">4</div><h3>Learn & Track Progress</h3><p>Browse the catalog, enroll in courses, watch videos, read documents, and monitor your progress. Download content to learn offline, whenever it fits your schedule.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ── APP DOWNLOAD SECTION (with real app.png and iOS button) ── -->
+  <section class="section" id="why-utom">
+    <div class="text-center">
+      <span class="section-label">Why UTOM</span>
+      <h2>Built for <span>Real Learning</span></h2>
+      <p class="section-desc">
+        UTOM isn't just another course library. It's a mobile‑first ecosystem designed to remove barriers between you and practical knowledge. Here's what sets it apart.
+      </p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Lightweight & Fast</h3>
+        <p>The app is optimized to run smoothly on virtually any smartphone, with minimal storage and data requirements. Updates are small and efficient, keeping you focused on learning.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <h3>Secure Transactions</h3>
+        <p>All payments are processed with industry‑standard encryption. Your financial details are never stored on the device, and wallet operations require confirmation.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-globe"></i></div>
+        <h3>Global & Local Content</h3>
+        <p>UTOM offers courses relevant to international job markets while also including locally contextualized skills — making it valuable no matter where you're building your future.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-headset"></i></div>
+        <h3>Responsive Support</h3>
+        <p>Get help via in‑app chat, email, or WhatsApp. Our support team responds quickly and is dedicated to resolving any issue you encounter.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>Continuous Improvement</h3>
+        <p>We release regular updates based on learner feedback. New courses, features, and performance enhancements arrive frequently, keeping the experience fresh.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon"><i class="fas fa-users"></i></div>
+        <h3>Growing Community</h3>
+        <p>Join thousands of learners who are already advancing their skills with UTOM. Your progress contributes to a global network of self‑improvement and opportunity.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="download">
     <div class="app-download-section animate-on-scroll">
-      <div class="app-mockup">
-        <img src="app.png" alt="UTOM App Screenshot" />
+      <div class="phone-float-wrapper">
+        <div class="phone-float-glow"></div>
+        <div class="phone-float-container">
+          <div class="phone-device">
+            <div class="phone-screen"><img src="app.png" alt="UTOM App Screenshot" /></div>
+          </div>
+          <div class="phone-shadow"></div>
+        </div>
       </div>
       <div class="app-download-content">
         <h2>Get the <span style="color:var(--gold-dark);">UTOM</span> App</h2>
         <p>
-          Download directly for Android or follow the iOS guide to install on your iPhone. No app stores required.
+          Download the application directly — no app store intermediaries, no unnecessary permissions. The Android APK installs in seconds, and iOS users can add UTOM to their home screen with a straightforward process. Once installed, you'll have immediate access to free courses, your personal wallet, and the full offline learning experience.
         </p>
+        <ul class="app-detail-list">
+          <li><i class="fas fa-check-circle"></i> Direct APK for Android — no Play Store needed</li>
+          <li><i class="fas fa-check-circle"></i> iOS installation via Safari "Add to Home Screen"</li>
+          <li><i class="fas fa-check-circle"></i> Download videos & documents for offline study</li>
+          <li><i class="fas fa-check-circle"></i> Integrated wallet with mobile money support</li>
+          <li><i class="fas fa-check-circle"></i> Lightweight app — works on all modern smartphones</li>
+        </ul>
         <div class="download-buttons">
-          <a href="#" class="download-btn pulse" id="mainDownloadBtn">
-            <i class="fas fa-download"></i> Download for Android
-          </a>
-          <button class="ios-download-btn" id="iosDownloadBtn">
-            <i class="fab fa-apple"></i> Install on iOS
-          </button>
+          <a href="#" class="download-btn pulse" id="mainDownloadBtn"><i class="fas fa-download"></i> Download for Android</a>
+          <button class="ios-download-btn" id="iosDownloadBtn"><i class="fab fa-apple"></i> Install on iOS</button>
         </div>
-        <p class="app-version-text">
-          <i class="fas fa-shield-alt"></i> Verified & safe · Version 2.5.1
-        </p>
+        <p class="app-version-text"><i class="fas fa-shield-alt"></i> Verified & safe · Version 2.5.1 · Updated June 2026</p>
+        <div class="trust-row">
+          <span class="trust-badge"><i class="fas fa-lock"></i> Secure Download</span>
+          <span class="trust-badge"><i class="fas fa-check-shield"></i> Virus‑Free</span>
+          <span class="trust-badge"><i class="fas fa-mobile-alt"></i> 50,000+ Installs</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── iOS INSTALL MODAL ── -->
   <div class="modal-overlay" id="iosModal">
     <div class="modal-content">
       <button class="modal-close" id="closeIosModal"><i class="fas fa-times"></i></button>
-      <h3><i class="fab fa-apple" style="color:#1a1d28; margin-right:6px;"></i> Install UTOM on iOS</h3>
+      <h3><i class="fab fa-apple" style="color:#1a1d28;"></i> Install UTOM on iOS</h3>
+      <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.2rem;">Follow these steps to add UTOM to your iPhone or iPad home screen.</p>
       <div class="modal-steps">
-        <div class="modal-step">
-          <span class="step-num">1</span>
-          <span>Tap the link below to open the app in <strong>Safari</strong>.</span>
-        </div>
-        <div class="modal-step">
-          <span class="step-num">2</span>
-          <span>Tap the <strong>Share</strong> button at the bottom of the screen.</span>
-        </div>
-        <div class="modal-step">
-          <span class="step-num">3</span>
-          <span>Scroll down and select <strong>"Add to Home Screen"</strong>.</span>
-        </div>
-        <div class="modal-step">
-          <span class="step-num">4</span>
-          <span>Tap <strong>"Add"</strong> — the UTOM app will appear on your home screen!</span>
-        </div>
+        <div class="modal-step"><span class="step-num">1</span><span>Open the link below in <strong>Safari</strong> (required for installation).</span></div>
+        <div class="modal-step"><span class="step-num">2</span><span>Tap the <strong>Share</strong> button at the bottom of the screen.</span></div>
+        <div class="modal-step"><span class="step-num">3</span><span>Scroll and select <strong>"Add to Home Screen"</strong>.</span></div>
+        <div class="modal-step"><span class="step-num">4</span><span>Tap <strong>"Add"</strong> — the UTOM icon appears instantly.</span></div>
       </div>
-      <a href="#" target="_blank" class="modal-link-btn" id="iosOpenLink">
-        <i class="fas fa-external-link-alt"></i> Open in Safari
-      </a>
-      <p class="modal-note">Make sure you open this link in Safari, not another browser.</p>
+      <a href="#" target="_blank" class="modal-link-btn" id="iosOpenLink"><i class="fas fa-external-link-alt"></i> Open in Safari</a>
+      <p class="modal-note">Make sure you use Safari; other browsers won't show the installation option.</p>
     </div>
   </div>
 
-  <!-- ── CTA ── -->
   <section class="section" id="cta">
     <div class="cta-section animate-on-scroll">
       <h2>Ready to Transform Your Skills?</h2>
-      <p>Join thousands of learners already using UTOM. Download now and access free courses instantly.</p>
-      <a href="#download" class="btn-primary"><i class="fas fa-download"></i> Download UTOM Free</a>
+      <p>Join a global community of motivated learners who are building real, marketable skills with UTOM. Download the app and get instant access to free courses — no payment required to start.</p>
+      <a href="#download" class="btn-primary"><i class="fas fa-download"></i> Download UTOM Now</a>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-col">
-        <div class="footer-logo"><i class="fas fa-chalkboard-user"></i> UTOM</div>
-        <p style="font-size:0.8rem;color:#8b8fa3;">Learn & Grow — anywhere, anytime.</p>
+        <div class="footer-logo"><img src="logo.png" alt="UTOM" class="footer-logo-img" /></div>
+        <p style="font-size:0.8rem;color:#8b8fa3;">Learn without limits — anytime, anywhere.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#hero">Home</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#download">Download App</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#download">Download</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4>Support</h4>
         <ul>
           <li><a href="mailto:support@utom.app"><i class="fas fa-envelope"></i> support@utom.app</a></li>
           <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+          <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2026 UTOM · Learn & Grow. All rights reserved.
-    </div>
+    <div class="footer-bottom">&copy; 2026 UTOM · Learn & Grow. All rights reserved.</div>
   </footer>
 
   <script>
-    // ── MOBILE MENU TOGGLE ──
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-      });
-    });
+    mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    // ── NAV SCROLL SHADOW ──
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
 
-    // ── SCROLL ANIMATIONS ──
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
-    });
+      entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // ── SMOOTH SCROLL FOR ALL ANCHOR LINKS ──
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if(targetId === '#') return;
         e.preventDefault();
         const target = document.querySelector(targetId);
-        if (target) {
+        if(target) {
           const navHeight = document.getElementById('navbar').offsetHeight;
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navHeight, behavior: 'smooth' });
         }
       });
     });
 
-    // ── ACTIVE NAV LINK HIGHLIGHT ──
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
     window.addEventListener('scroll', () => {
       let current = '';
       const navH = document.getElementById('navbar').offsetHeight;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - navH - 100;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      navItems.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
-      });
+      sections.forEach(section => { if(window.scrollY >= section.offsetTop - navH - 120) current = section.getAttribute('id'); });
+      navItems.forEach(link => { link.classList.toggle('active', link.getAttribute('href') === '#' + current); });
     });
 
-    // ── ANDROID DOWNLOAD BUTTON ──
-    document.getElementById('mainDownloadBtn').addEventListener('click', function(e) {
+    document.getElementById('mainDownloadBtn')?.addEventListener('click', function(e) {
       e.preventDefault();
-      alert('Thank you for choosing UTOM! The Android APK download will start shortly.');
-      // window.location.href = 'path/to/utom.apk';
+      alert('Your UTOM Android download will begin shortly. Install the app to start learning!');
     });
 
-    // ── iOS MODAL LOGIC ──
     const iosModal = document.getElementById('iosModal');
-    const iosDownloadBtn = document.getElementById('iosDownloadBtn');
-    const closeIosModal = document.getElementById('closeIosModal');
-    const iosOpenLink = document.getElementById('iosOpenLink');
-
-    iosDownloadBtn.addEventListener('click', () => {
-      iosModal.classList.add('open');
-    });
-
-    closeIosModal.addEventListener('click', () => {
-      iosModal.classList.remove('open');
-    });
-
-    iosModal.addEventListener('click', (e) => {
-      if (e.target === iosModal) {
-        iosModal.classList.remove('open');
-      }
-    });
-
-    // Set the link for the "Open in Safari" button (replace with your actual app URL)
-    iosOpenLink.setAttribute('href', 'https://yourappurl.com');
+    document.getElementById('iosDownloadBtn')?.addEventListener('click', () => iosModal.classList.add('open'));
+    document.getElementById('closeIosModal')?.addEventListener('click', () => iosModal.classList.remove('open'));
+    iosModal?.addEventListener('click', (e) => { if(e.target === iosModal) iosModal.classList.remove('open'); });
+    document.getElementById('iosOpenLink')?.setAttribute('href', 'https://yourappurl.com');
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && iosModal?.classList.contains('open')) iosModal.classList.remove('open'); });
   </script>
 </body>
 </html>
